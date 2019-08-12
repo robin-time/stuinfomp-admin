@@ -1,9 +1,10 @@
 <template>
   <div class="login-container">
+    <el-button :loading="loading" type="primary" class = "el-button el-button--primary is-plain" style="width:8%; margin-bottom:30px; " @click.native.prevent="handleReg">注册用户</el-button>
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
 
       <div class="title-container">
-        <h3 class="title">Login Form</h3>
+        <h3 class="title">学 生 信 息 管 理 平 台</h3>
       </div>
 
       <el-form-item prop="username">
@@ -41,7 +42,7 @@
         </span>
       </el-form-item>
 
-      <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">Login</el-button>
+      <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">登   录</el-button>
     </el-form>
   </div>
 </template>
@@ -119,6 +120,9 @@ export default {
           return false
         }
       })
+    },
+    handleReg () {
+      this.$router.push({path: this.redirect || '/reg'})
     }
   }
 }

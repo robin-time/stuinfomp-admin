@@ -5,18 +5,13 @@
         <h3 class="title">欢 迎 注 册 </h3>
       </div>
       <el-form-item label="用户名" prop="username">
-        <el-input v-model="ruleForm.username"
-                  :key="passwordType"
-                  ref="password"
-                  :type="passwordType"
-                  placeholder="Password"
-                  name="password"
-                  tabindex="2"
-                  auto-complete="on"
-        ></el-input>
+        <el-input v-model="ruleForm.username"></el-input>
       </el-form-item>
       <el-form-item label="密码" prop="password">
-        <el-input v-model="ruleForm.password"></el-input>
+        <el-input v-model="ruleForm.password" show-password></el-input>
+      </el-form-item>
+      <el-form-item label="确认密码" prop="passwordSure">
+        <el-input v-model="ruleForm.passwordSure" show-password></el-input>
       </el-form-item>
       <el-form-item label="手机号" prop="phone">
         <el-input v-model="ruleForm.phone"></el-input>
@@ -24,11 +19,11 @@
       <el-form-item label="邮箱" prop="email">
         <el-input v-model="ruleForm.email"></el-input>
       </el-form-item>
-      <el-form-item>
+      <el-form>
         <el-button type="primary" @click="submitForm('ruleForm')">立即注册</el-button>
         <el-button @click="resetForm('ruleForm')">重置</el-button>
         <el-button @click="returnLoginPage">返回登录页面</el-button>
-      </el-form-item>
+      </el-form>
     </el-form>
   </div>
 </template>
@@ -40,6 +35,7 @@ export default {
       ruleForm: {
         username: '',
         password: '',
+        passwordSure: '',
         phone: '',
         email: ''
       },
@@ -49,6 +45,10 @@ export default {
           { min: 5, max: 20, message: '长度在 5 到 20 个字符', trigger: 'blur' }
         ],
         password: [
+          { required: true, message: '请设置用户密码', trigger: 'blur' },
+          { min: 6, max: 20, message: '长度在 6 到 20 个字符', trigger: 'blur' }
+        ],
+        passwordSure: [
           { required: true, message: '请设置用户密码', trigger: 'blur' },
           { min: 6, max: 20, message: '长度在 6 到 20 个字符', trigger: 'blur' }
         ],

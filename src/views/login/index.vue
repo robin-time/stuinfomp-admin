@@ -39,6 +39,7 @@
             @keyup.native="checkCapslock"
             @blur="capsTooltip = false"
             @keyup.enter.native="handleLogin"
+            show-password
           />
           <span class="show-pwd" @click="showPwd">
             <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
@@ -119,10 +120,6 @@ export default {
       })
     },
     handleLogin () {
-      // this.$axios.post('127.0.0.1:9000/api/user/login', this.loginForm).then(() => { console.log('sdfd') }
-      // ).catch(() => {
-      //   console.log('miss')
-      // })
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true

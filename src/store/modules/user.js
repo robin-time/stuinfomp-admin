@@ -43,6 +43,7 @@ const actions = {
         const { data } = response
 
         if (!data) {
+          /* eslint-disable */
           reject('Verification failed, please Login again.')
         }
 

@@ -1,26 +1,22 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+/* Layout */
+import Layout from '@/layout'
 
 Vue.use(Router)
 
-// export default new Router({
-//   // 去掉url中的#
-//   mode: 'history',
-//   routes: [
-//     {
-//       path: '/',
-//       name: 'HelloWorld',
-//       component: HelloWorld
-//     },
-//     {
-//       path: '/login',
-//       component: () => import('@/views/login/index'),
-//       hidden: true
-//     }
-//   ]
-// })
-
 export const constantRoutes = [
+  {
+    path: '/redirect',
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: '/redirect/:path*',
+        component: () => import('@/views/redirect/index')
+      }
+    ]
+  },
   {
     path: '/login',
     component: () => import('@/views/login/index')
@@ -37,7 +33,19 @@ export const constantRoutes = [
     component: () => import('@/views/404'),
     hidden: true
   },
-
+  {
+    path: '/',
+    component: Layout,
+    redirect: '/dashboard',
+    children: [
+      {
+        path: 'dashboard',
+        component: () => import('@/views/dashboard/index'),
+        name: 'Dashboard',
+        meta: { title: 'Dashboard', icon: 'dashboard', affix: true }
+      }
+    ]
+  },
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]

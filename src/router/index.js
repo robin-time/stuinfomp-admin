@@ -30,6 +30,27 @@ export const constantRoutes = [
       meta: { title: 'Dashboard', icon: 'dashboard' }
     }]
   },
+  {
+    path: '/students',
+    component: Layout,
+    redirect: '/students/table',
+    name: 'Students',
+    meta: { title: 'StudentMGT', icon: 'example' },
+    children: [
+      {
+        path: 'table',
+        name: 'ListStudent',
+        component: () => import('@/views/table/index'),
+        meta: { title: 'ListStu', icon: 'table' }
+      },
+      {
+        path: 'index',
+        name: 'AddStudent',
+        component: () => import('@/views/form/index'),
+        meta: { title: 'AddStu', icon: 'form' }
+      }
+    ]
+  },
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]

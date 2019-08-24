@@ -31,23 +31,101 @@ export const constantRoutes = [
     }]
   },
   {
-    path: '/students',
+    path: '/student',
     component: Layout,
-    redirect: '/students/table',
-    name: 'Students',
+    redirect: '/student/table',
+    name: 'Student',
     meta: { title: 'StudentMGT', icon: 'example' },
     children: [
       {
         path: 'table',
         name: 'ListStudent',
-        component: () => import('@/views/table/index'),
+        component: () => import('@/views/student/table/index'),
         meta: { title: 'ListStu', icon: 'table' }
       },
       {
         path: 'index',
         name: 'AddStudent',
-        component: () => import('@/views/form/index'),
+        component: () => import('@/views/student/form/index'),
         meta: { title: 'AddStu', icon: 'form' }
+      }
+    ]
+  },
+  {
+    path: '/teacher',
+    component: Layout,
+    redirect: '/teacher/table',
+    name: 'Teacher',
+    meta: { title: 'TeacherMGT', icon: 'example' },
+    children: [
+      {
+        path: 'table',
+        name: 'ListTeacher',
+        component: () => import('@/views/teacher/table/index'),
+        meta: { title: 'ListTeacher', icon: 'table' }
+      },
+      {
+        path: 'index',
+        name: 'AddTeacher',
+        component: () => import('@/views/teacher/form/index'),
+        meta: { title: 'AddTeacher', icon: 'form' }
+      }
+    ]
+  },
+  {
+    path: '/course',
+    component: Layout,
+    redirect: '/course/table',
+    name: 'Course',
+    meta: { title: 'CourseMGT', icon: 'example' },
+    children: [
+      {
+        path: 'table',
+        name: 'ListCourse',
+        component: () => import('@/views/course/table/index'),
+        meta: { title: 'ListCourse', icon: 'table' }
+      },
+      {
+        path: 'index',
+        name: 'AddCourse',
+        component: () => import('@/views/course/form/index'),
+        meta: { title: 'AddCourse', icon: 'form' }
+      }
+    ]
+  },
+  {
+    path: '/score',
+    component: Layout,
+    redirect: '/score/table',
+    name: 'Score',
+    meta: { title: 'ScoreMGT', icon: 'example' },
+    children: [
+      {
+        path: 'table',
+        name: 'ListScore',
+        component: () => import('@/views/score/table/index'),
+        meta: { title: 'ListScore', icon: 'table' }
+      },
+      {
+        path: 'index',
+        name: 'AddScore',
+        component: () => import('@/views/score/form/index'),
+        meta: { title: 'AddScore', icon: 'form' }
+      }
+    ]
+  },
+  {
+    path: '/user',
+    component: Layout,
+    redirect: '/user/table',
+    name: 'User',
+    meta: { title: 'UserMGT', icon: 'example' },
+    children: [
+      {
+        path: 'table',
+        name: 'ListUser',
+        component: () => import('@/views/user/table/index'),
+        meta: { title: 'ListUserMGT', icon: 'table' }
       }
     ]
   },

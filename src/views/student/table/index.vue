@@ -108,6 +108,7 @@ export default {
     },
     editClick(row) {
       console.log(row)
+      this.$router.push({path: '/student/edit', query: row})
     }
   }
 }

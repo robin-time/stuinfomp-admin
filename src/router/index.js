@@ -48,6 +48,11 @@ export const constantRoutes = [
         name: 'AddStudent',
         component: () => import('@/views/student/form/index'),
         meta: { title: 'AddStu', icon: 'form' }
+      },
+      {
+        path: 'edit',
+        name: 'EditStudent',
+        component: () => import('@/views/student/edit/index')
       }
     ]
   },

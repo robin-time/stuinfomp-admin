@@ -1,9 +1,15 @@
 <template>
   <div class="app-container">
+    <div style="margin: 10px; color:blue"><span><i class="el-icon-edit"></i>Edit Course Information</span></div>
     <el-form ref="form" :model="form" label-width="120px">
-      <el-form-item label="Student name">
+      <el-form-item label="Course ID">
+        <el-input v-model="form.id"
+                  placeholder="请输入课程名称"
+                  clearable/>
+      </el-form-item>
+      <el-form-item label="Course name">
         <el-input v-model="form.name"
-                  placeholder="请输入学生姓名"
+                  placeholder="请输入课程名称"
                   clearable/>
       </el-form-item>
       <el-form-item label="Course major">
@@ -13,15 +19,10 @@
           clearable>
         </el-input>
       </el-form-item>
-      <el-form-item label="Course name">
-        <el-input v-model="form.cname"
-                  placeholder="请输入课程名称"
-                  clearable/>
-      </el-form-item>
-      <el-form-item label="Exam results">
+      <el-form-item label="TeacherNumber">
         <el-input
-          placeholder="考试成绩"
-          v-model="form.score"
+          placeholder="请输入授课教师编号"
+          v-model="form.Number"
           clearable>
         </el-input>
       </el-form-item>
@@ -29,7 +30,7 @@
         <el-input v-model="form.desc" type="textarea" placeholder="备注"/>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">Create</el-button>
+        <el-button type="primary" @click="onSubmit">Update</el-button>
         <el-button @click="onCancel">Cancel</el-button>
       </el-form-item>
     </el-form>
@@ -42,10 +43,12 @@ export default {
     return {
       form: {
         name: '',
-        score: '',
+        sex: '',
+        phone: '',
+        grade: '',
         major: '',
-        desc: '',
-        cname: ''
+        idNumber: '',
+        desc: ''
       }
     }
   },
@@ -58,7 +61,14 @@ export default {
         message: 'cancel!',
         type: 'warning'
       })
+    },
+    fill() {
+      console.log(this.$route.query.name)
+      this.form.name = this.$route.query.name
     }
+  },
+  created() {
+    this.fill()
   }
 }
 </script>

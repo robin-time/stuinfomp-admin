@@ -1,5 +1,6 @@
 <template>
   <div class="app-container">
+    <div style="margin: 10px; color:blue"><span><i class="el-icon-edit"></i>Edit Score Information</span></div>
     <el-form ref="form" :model="form" label-width="120px">
       <el-form-item label="Student name">
         <el-input v-model="form.name"
@@ -29,7 +30,7 @@
         <el-input v-model="form.desc" type="textarea" placeholder="备注"/>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">Create</el-button>
+        <el-button type="primary" @click="onSubmit">Update</el-button>
         <el-button @click="onCancel">Cancel</el-button>
       </el-form-item>
     </el-form>
@@ -42,10 +43,10 @@ export default {
     return {
       form: {
         name: '',
-        score: '',
+        cname: '',
         major: '',
-        desc: '',
-        cname: ''
+        idNumber: '',
+        desc: ''
       }
     }
   },
@@ -58,7 +59,15 @@ export default {
         message: 'cancel!',
         type: 'warning'
       })
+    },
+    fill() {
+      console.log(this.$route.query.name)
+      this.form.name = this.$route.query.name
+      this.form.phone = this.$route.query.phone
     }
+  },
+  created() {
+    this.fill()
   }
 }
 </script>

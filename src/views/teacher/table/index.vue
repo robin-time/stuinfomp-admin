@@ -8,7 +8,7 @@
       fit
       highlight-current-row
     >
-      <el-table-column align="center" label="ID" width="95">
+      <el-table-column align="center" label="序号" width="95">
         <template slot-scope="scope">
           {{ scope.$index + 1 }}
         </template>
@@ -38,15 +38,13 @@
           {{ scope.row.phone }}
         </template>
       </el-table-column>
-      <el-table-column class-name="status-col" label="Status" width="110" align="center">
+      <el-table-column
+        fixed="right"
+        label="操作"
+        width="100">
         <template slot-scope="scope">
-          <el-tag :type="scope.row.status | statusFilter">{{ scope.row.status }}</el-tag>
-        </template>
-      </el-table-column>
-      <el-table-column align="center" prop="created_at" label="Display_time" width="200">
-        <template slot-scope="scope">
-          <i class="el-icon-time" />
-          <span>{{ scope.row.display_time }}</span>
+          <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
+          <el-button @click="editClick(scope.row)" type="text" size="small">编辑</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -87,6 +85,13 @@ export default {
       }).catch(err => {
         console.log(err)
       })
+    },
+    handleClick(row) {
+      console.log(row)
+    },
+    editClick(row) {
+      console.log(row)
+      this.$router.push({path: '/teacher/edit', query: row})
     }
   }
 }

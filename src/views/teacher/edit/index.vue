@@ -1,43 +1,29 @@
 <template>
   <div class="app-container">
-    <div style="margin: 10px; color:blue"><span><i class="el-icon-edit"></i>Edit Student Information</span></div>
+    <div style="margin: 10px; color:blue"><span><i class="el-icon-edit"></i>Edit Teacher Information</span></div>
     <el-form ref="form" :model="form" label-width="120px">
-      <el-form-item label="Student name">
+      <el-form-item label="Teacher name">
         <el-input v-model="form.name"
-                  placeholder="请输入学生姓名"
+                  placeholder="请输入教师姓名"
                   clearable/>
       </el-form-item>
-      <el-form-item label="Student sex">
+      <el-form-item label="Teacher sex">
         <el-radio-group v-model="form.sex">
           <el-radio label="male" />
           <el-radio label="female " />
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="Student phone">
+      <el-form-item label="Teacher phone">
         <el-input
           placeholder="请输入11位手机号码"
           v-model="form.phone"
           clearable>
         </el-input>
       </el-form-item>
-      <el-form-item label="Student grade">
+      <el-form-item label="Teacher major">
         <el-input
-          placeholder="请输入学生的年级，4位数字例如：1709"
-          v-model="form.grade"
-          clearable>
-        </el-input>
-      </el-form-item>
-      <el-form-item label="Student major">
-        <el-input
-          placeholder="请输入学生的专业"
+          placeholder="请输入教师的专业"
           v-model="form.major"
-          clearable>
-        </el-input>
-      </el-form-item>
-      <el-form-item label="Student ID">
-        <el-input
-          placeholder="请输入学生的身份证号码"
-          v-model="form.idNumber"
           clearable>
         </el-input>
       </el-form-item>

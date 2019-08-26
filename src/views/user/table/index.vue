@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import { getList } from '@/api/table'
+import {request} from '@/network/request'
 
 export default {
   filters: {
@@ -69,9 +69,13 @@ export default {
   methods: {
     fetchData() {
       this.listLoading = true
-      getList().then(response => {
-        this.list = response.data.items
+      request({
+        url: '/users'
+      }).then(response => {
+        this.list = response.data
         this.listLoading = false
+      }).catch(err => {
+        console.log(err)
       })
     }
   }

@@ -74,6 +74,11 @@ export const constantRoutes = [
         name: 'AddTeacher',
         component: () => import('@/views/teacher/form/index'),
         meta: { title: 'AddTeacher', icon: 'form' }
+      },
+      {
+        path: 'edit',
+        name: 'EditTeacher',
+        component: () => import('@/views/teacher/edit/index')
       }
     ]
   },
@@ -95,6 +100,11 @@ export const constantRoutes = [
         name: 'AddCourse',
         component: () => import('@/views/course/form/index'),
         meta: { title: 'AddCourse', icon: 'form' }
+      },
+      {
+        path: 'edit',
+        name: 'EditCourse',
+        component: () => import('@/views/course/edit/index')
       }
     ]
   },
@@ -116,6 +126,11 @@ export const constantRoutes = [
         name: 'AddScore',
         component: () => import('@/views/score/form/index'),
         meta: { title: 'AddScore', icon: 'form' }
+      },
+      {
+        path: 'edit',
+        name: 'EditScore',
+        component: () => import('@/views/score/edit/index')
       }
     ]
   },

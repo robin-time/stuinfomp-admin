@@ -10,7 +10,7 @@
     >
       <el-table-column align="center" label="序号" width="55">
         <template slot-scope="scope">
-          {{ scope.$index }}
+          {{ scope.$index + 1}}
         </template>
       </el-table-column>
       <el-table-column label="学号" width="150" align="center">

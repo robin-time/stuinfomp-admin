@@ -10,22 +10,32 @@
     >
       <el-table-column align="center" label="ID" width="95">
         <template slot-scope="scope">
-          {{ scope.$index }}
+          {{ scope.$index + 1 }}
         </template>
       </el-table-column>
-      <el-table-column label="Title">
+      <el-table-column label="编号" width="150" align="center">
         <template slot-scope="scope">
-          {{ scope.row.title }}
+          {{ scope.row.teahcerNumber }}
         </template>
       </el-table-column>
-      <el-table-column label="Author" width="110" align="center">
+      <el-table-column label="姓名" width="110" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.author }}</span>
+          <span>{{ scope.row.name }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="Pageviews" width="110" align="center">
+      <el-table-column label="性别" width="90" align="center">
         <template slot-scope="scope">
-          {{ scope.row.pageviews }}
+          {{ scope.row.sex }}
+        </template>
+      </el-table-column>
+      <el-table-column label="专业" width="150" align="center">
+        <template slot-scope="scope">
+          {{ scope.row.major }}
+        </template>
+      </el-table-column>
+      <el-table-column label="手机号" >
+        <template slot-scope="scope">
+          {{ scope.row.phone }}
         </template>
       </el-table-column>
       <el-table-column class-name="status-col" label="Status" width="110" align="center">
@@ -44,7 +54,7 @@
 </template>
 
 <script>
-import { getList } from '@/api/table'
+import {request} from '@/network/request'
 
 export default {
   filters: {
@@ -69,9 +79,13 @@ export default {
   methods: {
     fetchData() {
       this.listLoading = true
-      getList().then(response => {
-        this.list = response.data.items
+      request({
+        url: '/users'
+      }).then(response => {
+        this.list = response.data
         this.listLoading = false
+      }).catch(err => {
+        console.log(err)
       })
     }
   }

@@ -8,11 +8,7 @@ import Cookies from 'js-cookie'
 import App from './App'
 import router from './router'
 import store from './store'
-import axios from 'axios'
 import '@/icons' // icon
-
-axios.defaults.baseURL = 'http://127.0.0.1:9000/api/'
-Vue.prototype.$axios = axios
 
 // set ElementUI lang to EN
 Vue.use(ElementUI, {locale,

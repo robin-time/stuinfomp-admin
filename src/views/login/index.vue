@@ -54,6 +54,7 @@
 
 <script>
 import { validUsername } from '@/utils/validate'
+import {request} from '@/network/request'
 
 export default {
   name: 'Login',
@@ -124,13 +125,15 @@ export default {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true
-          this.$axios.post('user/login', this.loginForm)
-            .then(() => {
-              this.$router.push({ path: this.redirect || '/404' })
-              this.loading = false
-            }).catch(() => {
-              this.loading = false
-            })
+          request({
+            url: 'user/login',
+            params: this.loginForm
+          }).then(() => {
+            this.$router.push({ path: this.redirect || '/404' })
+            this.loading = false
+          }).catch(() => {
+            this.loading = false
+          })
         } else {
           console.log('error submit!!')
           return false

@@ -8,35 +8,32 @@
       fit
       highlight-current-row
     >
-      <el-table-column align="center" label="ID" width="95">
+      <el-table-column align="center" label="Order" width="95">
         <template slot-scope="scope">
-          {{ scope.$index }}
+          {{ scope.$index + 1}}
         </template>
       </el-table-column>
-      <el-table-column label="Title">
+      <el-table-column label="Username"  width="210" align="center">
         <template slot-scope="scope">
-          {{ scope.row.title }}
+          {{ scope.row.name }}
         </template>
       </el-table-column>
-      <el-table-column label="Author" width="110" align="center">
+      <el-table-column label="Phone" width="310" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.author }}</span>
+          <span>{{ scope.row.phone }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="Pageviews" width="110" align="center">
+      <el-table-column label="Email">
         <template slot-scope="scope">
-          {{ scope.row.pageviews }}
+          {{ scope.row.email }}
         </template>
       </el-table-column>
-      <el-table-column class-name="status-col" label="Status" width="110" align="center">
+      <el-table-column
+        fixed="right"
+        label="操作"
+        width="100">
         <template slot-scope="scope">
-          <el-tag :type="scope.row.status | statusFilter">{{ scope.row.status }}</el-tag>
-        </template>
-      </el-table-column>
-      <el-table-column align="center" prop="created_at" label="Display_time" width="200">
-        <template slot-scope="scope">
-          <i class="el-icon-time" />
-          <span>{{ scope.row.display_time }}</span>
+          <el-button @click="deleteClick(scope.row.id)" type="text" size="small">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -73,6 +70,18 @@ export default {
         url: '/users'
       }).then(response => {
         this.list = response.data
+        this.listLoading = false
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    deleteClick(userId) {
+      console.log(userId)
+      request({
+        url: '/users'
+        // params: userId
+      }).then(res => {
+        this.fetchData()
         this.listLoading = false
       }).catch(err => {
         console.log(err)

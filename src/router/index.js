@@ -143,7 +143,7 @@ export const constantRoutes = [
     children: [
       {
         path: 'table',
-        name: 'ListUser',
+        name: 'ListUsers',
         component: () => import('@/views/user/table/index'),
         meta: { title: 'ListUserMGT', icon: 'table' }
       }

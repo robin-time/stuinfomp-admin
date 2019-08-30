@@ -6,10 +6,10 @@
                   placeholder="请输入学生姓名"
                   clearable/>
       </el-form-item>
-      <el-form-item label="Student sex">
-        <el-radio-group v-model="form.sex">
-          <el-radio label="male" />
-          <el-radio label="female " />
+      <el-form-item label="Student Gender">
+        <el-radio-group v-model="form.gender">
+          <el-radio label="1" >male</el-radio>
+          <el-radio label="0 ">female</el-radio>
         </el-radio-group>
       </el-form-item>
       <el-form-item label="Student phone">
@@ -19,7 +19,7 @@
           clearable>
         </el-input>
       </el-form-item>
-      <el-form-item label="Student grade">
+      <el-form-item label="Student Grade">
         <el-input
           placeholder="请输入学生的年级，4位数字例如：1709"
           v-model="form.grade"
@@ -52,12 +52,13 @@
 </template>
 
 <script>
+import {request} from '@/network/request'
 export default {
   data() {
     return {
       form: {
         name: '',
-        sex: '',
+        gender: '',
         phone: '',
         grade: '',
         major: '',
@@ -68,7 +69,15 @@ export default {
   },
   methods: {
     onSubmit() {
-      this.$message('submit!')
+      request({
+        url: '/core/student/add',
+        method: 'post',
+        data: this.form
+      }).then(res => {
+        console.log(res)
+      }).then(err => {
+        console.log(err)
+      })
     },
     onCancel() {
       this.$message({

@@ -15,7 +15,7 @@
       </el-table-column>
       <el-table-column label="学号" width="150" align="center">
         <template slot-scope="scope">
-          {{ scope.row.title }}
+          {{ scope.row.studentId }}
         </template>
       </el-table-column>
       <el-table-column label="姓名" width="110" align="center">
@@ -25,7 +25,7 @@
       </el-table-column>
       <el-table-column label="性别" width="110" align="center">
         <template slot-scope="scope">
-          {{ scope.row.sex }}
+          {{ scope.row.gender }}
         </template>
       </el-table-column>
       <el-table-column label="年级" width="110" align="center">
@@ -83,9 +83,9 @@ export default {
     fetchData() {
       this.listLoading = true
       request({
-        url: '/users'
+        url: 'core/student/page/0/10'
       }).then(res => {
-        this.list = res.data
+        this.list = res.data.rows
         console.log(res)
         this.listLoading = false
       }).catch(err => {

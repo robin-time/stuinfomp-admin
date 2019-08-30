@@ -75,7 +75,7 @@ export default {
     }
     return {
       loginForm: {
-        username: 'admin ',
+        username: 'admin',
         password: ''
       },
       loginRules: {
@@ -127,7 +127,8 @@ export default {
           this.loading = true
           request({
             url: 'user/login',
-            params: this.loginForm
+            data: this.loginForm,
+            method: 'post'
           }).then(() => {
             this.$router.push({ path: this.redirect || '/404' })
             this.loading = false

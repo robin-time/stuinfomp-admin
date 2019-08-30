@@ -6,8 +6,8 @@
                   placeholder="请输入教师姓名"
                   clearable/>
       </el-form-item>
-      <el-form-item label="Teacher sex">
-        <el-radio-group v-model="form.sex">
+      <el-form-item label="Teacher Gender">
+        <el-radio-group v-model="form.gender">
           <el-radio label="male" />
           <el-radio label="female " />
         </el-radio-group>
@@ -43,7 +43,7 @@ export default {
     return {
       form: {
         name: '',
-        sex: '',
+        gender: '',
         phone: '',
         grade: '',
         major: '',

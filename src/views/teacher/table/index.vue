@@ -25,7 +25,7 @@
       </el-table-column>
       <el-table-column label="性别" width="90" align="center">
         <template slot-scope="scope">
-          {{ scope.row.sex }}
+          {{ scope.row.gender }}
         </template>
       </el-table-column>
       <el-table-column label="专业" width="150" align="center">

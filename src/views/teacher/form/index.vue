@@ -8,8 +8,8 @@
       </el-form-item>
       <el-form-item label="Teacher Gender">
         <el-radio-group v-model="form.gender">
-          <el-radio label="male" />
-          <el-radio label="female " />
+          <el-radio label="1">male</el-radio>
+          <el-radio label="0 ">female</el-radio>
         </el-radio-group>
       </el-form-item>
       <el-form-item label="Teacher phone">
@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import {request} from '@/network/request'
 export default {
   data() {
     return {
@@ -47,14 +48,21 @@ export default {
         phone: '',
         grade: '',
         major: '',
-        idNumber: '',
         desc: ''
       }
     }
   },
   methods: {
     onSubmit() {
-      this.$message('submit!')
+      request({
+        url: '/core/teacher/add',
+        method: 'post',
+        data: this.form
+      }).then(res => {
+        this.$router.push({ path: this.redirect || '/teacher/table' })
+      }).then(err => {
+        console.log(err)
+      })
     },
     onCancel() {
       this.$message({

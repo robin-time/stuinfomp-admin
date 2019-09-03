@@ -25,7 +25,7 @@
       </el-table-column>
       <el-table-column label="性别" width="110" align="center">
         <template slot-scope="scope">
-          {{ scope.row.gender }}
+          {{ scope.row.gender == 1 ? '男':'女'}}
         </template>
       </el-table-column>
       <el-table-column label="年级" width="110" align="center">

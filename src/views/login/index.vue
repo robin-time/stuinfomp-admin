@@ -130,7 +130,7 @@ export default {
             data: this.loginForm,
             method: 'post'
           }).then(() => {
-            this.$router.push({ path: this.redirect || '/404' })
+            this.$router.push({ path: this.redirect || '/' })
             this.loading = false
           }).catch(() => {
             this.loading = false

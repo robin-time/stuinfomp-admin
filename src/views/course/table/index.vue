@@ -15,22 +15,22 @@
       </el-table-column>
       <el-table-column label="课程编号" width="180" align="center">
         <template slot-scope="scope">
-          {{ scope.row.id }}
+          {{ scope.row.courseNumber }}
         </template>
       </el-table-column>
-      <el-table-column label="课程名称" width="150" align="center">
+      <el-table-column label="课程名称" >
         <template slot-scope="scope">
           {{ scope.row.name }}
         </template>
       </el-table-column>
-      <el-table-column label="所属专业" >
-        <template slot-scope="scope">
-          <span>{{ scope.row.major }}</span>
-        </template>
-      </el-table-column>
+      <!--<el-table-column label="所属专业" >-->
+        <!--<template slot-scope="scope">-->
+          <!--<span>{{ scope.row.major }}</span>-->
+        <!--</template>-->
+      <!--</el-table-column>-->
       <el-table-column label="授课教师" width="150" align="center">
         <template slot-scope="scope">
-          {{ scope.row.Number }}
+          {{ scope.row.tid }}
         </template>
       </el-table-column>
       <el-table-column
@@ -73,9 +73,9 @@ export default {
     fetchData() {
       this.listLoading = true
       request({
-        url: '/users'
+        url: 'core/course/page/0/10'
       }).then(response => {
-        this.list = response.data
+        this.list = response.data.rows
         this.listLoading = false
       }).catch(err => {
         console.log(err)

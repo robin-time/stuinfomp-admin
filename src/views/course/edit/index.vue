@@ -3,26 +3,26 @@
     <div style="margin: 10px; color:blue"><span><i class="el-icon-edit"></i>Edit Course Information</span></div>
     <el-form ref="form" :model="form" label-width="120px">
       <el-form-item label="Course ID">
-        <el-input v-model="form.id"
-                  placeholder="请输入课程名称"
+        <el-input v-model="form.courseNumber"
+                  placeholder="课程编号"
                   clearable/>
       </el-form-item>
       <el-form-item label="Course name">
         <el-input v-model="form.name"
-                  placeholder="请输入课程名称"
+                  placeholder="课程名称"
                   clearable/>
       </el-form-item>
-      <el-form-item label="Course major">
-        <el-input
-          placeholder="请输入课程所属专业"
-          v-model="form.major"
-          clearable>
-        </el-input>
-      </el-form-item>
+      <!--<el-form-item label="Course major">-->
+        <!--<el-input-->
+          <!--placeholder="请输入课程所属专业"-->
+          <!--v-model="form.major"-->
+          <!--clearable>-->
+        <!--</el-input>-->
+      <!--</el-form-item>-->
       <el-form-item label="TeacherNumber">
         <el-input
-          placeholder="请输入授课教师编号"
-          v-model="form.Number"
+          placeholder="授课教师编号"
+          v-model="form.tid"
           clearable>
         </el-input>
       </el-form-item>
@@ -43,11 +43,8 @@ export default {
     return {
       form: {
         name: '',
-        sex: '',
-        phone: '',
-        grade: '',
-        major: '',
-        idNumber: '',
+        courseNumber: '',
+        tid: '',
         desc: ''
       }
     }
@@ -57,14 +54,12 @@ export default {
       this.$message('submit!')
     },
     onCancel() {
-      this.$message({
-        message: 'cancel!',
-        type: 'warning'
-      })
+      this.$router.push({ path: this.redirect || '/course/table' })
     },
     fill() {
-      console.log(this.$route.query.name)
       this.form.name = this.$route.query.name
+      this.form.courseNumber = this.$route.query.courseNumber
+      this.form.tid = this.$route.query.tid
     }
   },
   created() {

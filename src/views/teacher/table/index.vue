@@ -15,7 +15,7 @@
       </el-table-column>
       <el-table-column label="编号" width="150" align="center">
         <template slot-scope="scope">
-          {{ scope.row.teahcerNumber }}
+          {{ scope.row.teacherNumber }}
         </template>
       </el-table-column>
       <el-table-column label="姓名" width="110" align="center">
@@ -25,7 +25,7 @@
       </el-table-column>
       <el-table-column label="性别" width="90" align="center">
         <template slot-scope="scope">
-          {{ scope.row.gender }}
+          {{ scope.row.gender == 1 ? '男':'女' }}
         </template>
       </el-table-column>
       <el-table-column label="专业" width="150" align="center">
@@ -56,13 +56,13 @@ import {request} from '@/network/request'
 
 export default {
   filters: {
-    statusFilter(status) {
+    statusFilter(gender) {
+      console.log(gender)
       const statusMap = {
-        published: 'success',
-        draft: 'gray',
-        deleted: 'danger'
+        1: '男',
+        0: '女'
       }
-      return statusMap[status]
+      return statusMap[gender]
     }
   },
   data() {
@@ -78,9 +78,9 @@ export default {
     fetchData() {
       this.listLoading = true
       request({
-        url: '/users'
+        url: '/core/teacher/page/0/10'
       }).then(response => {
-        this.list = response.data
+        this.list = response.data.rows
         this.listLoading = false
       }).catch(err => {
         console.log(err)

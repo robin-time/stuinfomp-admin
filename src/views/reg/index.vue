@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import {request} from '@/network/request'
 export default {
   data() {
     return {
@@ -66,16 +67,19 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          this.$axios.post('user/reg', this.ruleForm)
-            .then(() => {
-              this.$message({
-                message: '恭喜你，注册成功！将返回登录页面',
-                type: 'success'
-              })
-              this.$router.push({path: this.redirect || '/login'})
-            }).catch(() => {
-              this.$message.error('抱歉！系统繁忙')
+          request({
+            url: 'user/reg',
+            method: 'post',
+            data: this.ruleForm
+          }).then(() => {
+            this.$message({
+              message: '恭喜你，注册成功！将返回登录页面',
+              type: 'success'
             })
+            this.$router.push({path: this.redirect || '/login'})
+          }).catch(() => {
+            this.$message.error('抱歉！系统繁忙')
+          })
         } else {
           this.$message({
             message: '您输入的信息有误',

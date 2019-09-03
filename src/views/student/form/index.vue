@@ -74,16 +74,13 @@ export default {
         method: 'post',
         data: this.form
       }).then(res => {
-        console.log(res)
+        this.$router.push({ path: this.redirect || '/student/table' })
       }).then(err => {
         console.log(err)
       })
     },
     onCancel() {
-      this.$message({
-        message: 'cancel!',
-        type: 'warning'
-      })
+      this.$router.push({ path: this.redirect || '/student/table' })
     }
   }
 }

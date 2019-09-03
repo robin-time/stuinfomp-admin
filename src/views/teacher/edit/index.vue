@@ -9,8 +9,8 @@
       </el-form-item>
       <el-form-item label="Teacher Gender">
         <el-radio-group v-model="form.gender">
-          <el-radio label="male" />
-          <el-radio label="female " />
+          <el-radio label="1">male</el-radio>
+          <el-radio label="0 ">female</el-radio>
         </el-radio-group>
       </el-form-item>
       <el-form-item label="Teacher phone">
@@ -46,9 +46,7 @@ export default {
         name: '',
         gender: '',
         phone: '',
-        grade: '',
         major: '',
-        idNumber: '',
         desc: ''
       }
     }
@@ -58,15 +56,14 @@ export default {
       this.$message('submit!')
     },
     onCancel() {
-      this.$message({
-        message: 'cancel!',
-        type: 'warning'
-      })
+      this.$router.push({ path: this.redirect || '/teacher/table' })
     },
     fill() {
-      console.log(this.$route.query.name)
       this.form.name = this.$route.query.name
+      this.form.gender = this.$route.query.gender
       this.form.phone = this.$route.query.phone
+      this.form.major = this.$route.query.major
+      this.form.desc = this.$route.query.desc
     }
   },
   created() {

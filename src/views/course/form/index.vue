@@ -6,17 +6,17 @@
                   placeholder="请输入课程名称"
                   clearable/>
       </el-form-item>
-      <el-form-item label="Course major">
-        <el-input
-          placeholder="请输入课程所属专业"
-          v-model="form.major"
-          clearable>
-        </el-input>
-      </el-form-item>
+      <!--<el-form-item label="Course major">-->
+        <!--<el-input-->
+          <!--placeholder="请输入课程所属专业"-->
+          <!--v-model="form.major"-->
+          <!--clearable>-->
+        <!--</el-input>-->
+      <!--</el-form-item>-->
       <el-form-item label="TeacherNumber">
         <el-input
           placeholder="请输入授课教师编号"
-          v-model="form.Number"
+          v-model="form.tid"
           clearable>
         </el-input>
       </el-form-item>
@@ -32,29 +32,31 @@
 </template>
 
 <script>
+import {request} from '@/network/request'
 export default {
   data() {
     return {
       form: {
         name: '',
-        sex: '',
-        phone: '',
-        grade: '',
-        major: '',
-        idNumber: '',
+        tid: '',
         desc: ''
       }
     }
   },
   methods: {
     onSubmit() {
-      this.$message('submit!')
+      request({
+        url: '/core/course/add',
+        method: 'post',
+        data: this.form
+      }).then(res => {
+        this.$router.push({ path: this.redirect || '/course/table' })
+      }).then(err => {
+        console.log(err)
+      })
     },
     onCancel() {
-      this.$message({
-        message: 'cancel!',
-        type: 'warning'
-      })
+      this.$router.push({ path: this.redirect || '/course/table' })
     }
   }
 }

@@ -3,19 +3,19 @@
     <div style="margin: 10px; color:blue"><span><i class="el-icon-edit"></i>Edit Score Information</span></div>
     <el-form ref="form" :model="form" label-width="120px">
       <el-form-item label="Student name">
-        <el-input v-model="form.name"
+        <el-input v-model="form.sid"
                   placeholder="请输入学生姓名"
                   clearable/>
       </el-form-item>
-      <el-form-item label="Course major">
-        <el-input
-          placeholder="请输入课程所属专业"
-          v-model="form.major"
-          clearable>
-        </el-input>
-      </el-form-item>
+      <!--<el-form-item label="Course major">-->
+        <!--<el-input-->
+          <!--placeholder="请输入课程所属专业"-->
+          <!--v-model="form.major"-->
+          <!--clearable>-->
+        <!--</el-input>-->
+      <!--</el-form-item>-->
       <el-form-item label="Course name">
-        <el-input v-model="form.cname"
+        <el-input v-model="form.cid"
                   placeholder="请输入课程名称"
                   clearable/>
       </el-form-item>
@@ -42,10 +42,8 @@ export default {
   data() {
     return {
       form: {
-        name: '',
-        cname: '',
-        major: '',
-        idNumber: '',
+        sid: '',
+        cid: '',
         desc: ''
       }
     }
@@ -55,15 +53,13 @@ export default {
       this.$message('submit!')
     },
     onCancel() {
-      this.$message({
-        message: 'cancel!',
-        type: 'warning'
-      })
+      this.$router.push({ path: this.redirect || '/score/table' })
     },
     fill() {
-      console.log(this.$route.query.name)
-      this.form.name = this.$route.query.name
-      this.form.phone = this.$route.query.phone
+      this.form.sid = this.$route.query.sid
+      this.form.cid = this.$route.query.cid
+      this.form.score = this.$route.query.score
+      this.form.desc = this.$route.query.desc
     }
   },
   created() {

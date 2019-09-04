@@ -2,19 +2,19 @@
   <div class="app-container">
     <el-form ref="form" :model="form" label-width="120px">
       <el-form-item label="Student name">
-        <el-input v-model="form.name"
+        <el-input v-model="form.sid"
                   placeholder="请输入学生姓名"
                   clearable/>
       </el-form-item>
-      <el-form-item label="Course major">
-        <el-input
-          placeholder="请输入课程所属专业"
-          v-model="form.major"
-          clearable>
-        </el-input>
-      </el-form-item>
+      <!--<el-form-item label="Course major">-->
+        <!--<el-input-->
+          <!--placeholder="请输入课程所属专业"-->
+          <!--v-model="form.major"-->
+          <!--clearable>-->
+        <!--</el-input>-->
+      <!--</el-form-item>-->
       <el-form-item label="Course name">
-        <el-input v-model="form.cname"
+        <el-input v-model="form.cid"
                   placeholder="请输入课程名称"
                   clearable/>
       </el-form-item>
@@ -37,27 +37,32 @@
 </template>
 
 <script>
+import {request} from '@/network/request'
 export default {
   data() {
     return {
       form: {
-        name: '',
+        sid: '',
         score: '',
-        major: '',
-        desc: '',
-        cname: ''
+        cid: '',
+        desc: ''
       }
     }
   },
   methods: {
     onSubmit() {
-      this.$message('submit!')
+      request({
+        url: '/core/score/add',
+        method: 'post',
+        data: this.form
+      }).then(res => {
+        this.$router.push({ path: this.redirect || '/score/table' })
+      }).then(err => {
+        console.log(err)
+      })
     },
     onCancel() {
-      this.$message({
-        message: 'cancel!',
-        type: 'warning'
-      })
+      this.$router.push({ path: this.redirect || '/score/table' })
     }
   }
 }

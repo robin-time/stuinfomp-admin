@@ -15,19 +15,19 @@
       </el-table-column>
       <el-table-column label="Student name" width="250" align="center">
         <template slot-scope="scope">
-          {{ scope.row.name }}
-        </template>
-      </el-table-column>
-      <el-table-column label="Course major" >
-        <template slot-scope="scope">
-          <span>{{ scope.row.major }}</span>
+          {{ scope.row.sid }}
         </template>
       </el-table-column>
       <el-table-column label="Course name" width="200" align="center">
         <template slot-scope="scope">
-          {{ scope.row.cname }}
+          {{ scope.row.cid }}
         </template>
       </el-table-column>
+      <!--<el-table-column label="Course major" >-->
+        <!--<template slot-scope="scope">-->
+          <!--<span>{{ scope.row.major }}</span>-->
+        <!--</template>-->
+      <!--</el-table-column>-->
       <el-table-column label="Exam results" width="200" align="center">
         <template slot-scope="scope">
           {{ scope.row.score }}
@@ -73,9 +73,9 @@ export default {
     fetchData() {
       this.listLoading = true
       request({
-        url: '/users'
+        url: 'core/score/page/0/10'
       }).then(response => {
-        this.list = response.data
+        this.list = response.data.rows
         this.listLoading = false
       }).catch(err => {
         console.log(err)

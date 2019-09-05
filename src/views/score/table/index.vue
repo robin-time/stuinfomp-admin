@@ -18,16 +18,11 @@
           {{ scope.row.sid }}
         </template>
       </el-table-column>
-      <el-table-column label="Course name" width="200" align="center">
+      <el-table-column label="Course name">
         <template slot-scope="scope">
           {{ scope.row.cid }}
         </template>
       </el-table-column>
-      <!--<el-table-column label="Course major" >-->
-        <!--<template slot-scope="scope">-->
-          <!--<span>{{ scope.row.major }}</span>-->
-        <!--</template>-->
-      <!--</el-table-column>-->
       <el-table-column label="Exam results" width="200" align="center">
         <template slot-scope="scope">
           {{ scope.row.score }}

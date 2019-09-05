@@ -6,13 +6,6 @@
                   placeholder="请输入学生姓名"
                   clearable/>
       </el-form-item>
-      <!--<el-form-item label="Course major">-->
-        <!--<el-input-->
-          <!--placeholder="请输入课程所属专业"-->
-          <!--v-model="form.major"-->
-          <!--clearable>-->
-        <!--</el-input>-->
-      <!--</el-form-item>-->
       <el-form-item label="Course name">
         <el-input v-model="form.cid"
                   placeholder="请输入课程名称"

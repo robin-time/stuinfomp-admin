@@ -23,11 +23,6 @@
           {{ scope.row.name }}
         </template>
       </el-table-column>
-      <!--<el-table-column label="所属专业" >-->
-        <!--<template slot-scope="scope">-->
-          <!--<span>{{ scope.row.major }}</span>-->
-        <!--</template>-->
-      <!--</el-table-column>-->
       <el-table-column label="授课教师" width="150" align="center">
         <template slot-scope="scope">
           {{ scope.row.tid }}

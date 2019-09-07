@@ -15,7 +15,7 @@
       </el-table-column>
       <el-table-column label="Username"  width="210" align="center">
         <template slot-scope="scope">
-          {{ scope.row.name }}
+          {{ scope.row.username }}
         </template>
       </el-table-column>
       <el-table-column label="Phone" width="310" align="center">
@@ -33,7 +33,7 @@
         label="操作"
         width="100">
         <template slot-scope="scope">
-          <el-button @click="deleteClick(scope.row.id)" type="text" size="small">删除</el-button>
+          <el-button @click="deleteClick(scope.row.id)" type="text" size="small">禁用</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -67,9 +67,9 @@ export default {
     fetchData() {
       this.listLoading = true
       request({
-        url: '/users'
+        url: '/user/page/0/10'
       }).then(response => {
-        this.list = response.data
+        this.list = response.data.rows
         this.listLoading = false
       }).catch(err => {
         console.log(err)
@@ -78,7 +78,7 @@ export default {
     deleteClick(userId) {
       console.log(userId)
       request({
-        url: '/users'
+        url: '/user'
         // params: userId
       }).then(res => {
         this.fetchData()

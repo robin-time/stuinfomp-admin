@@ -49,8 +49,8 @@ export default {
       this.$router.push({ path: this.redirect || '/score/table' })
     },
     fill() {
-      this.form.sid = this.$route.query.sid
-      this.form.cid = this.$route.query.cid
+      this.form.sid = '学生AA'
+      this.form.cid = 'Computer science and technology'
       this.form.score = this.$route.query.score
       this.form.desc = this.$route.query.desc
     }
